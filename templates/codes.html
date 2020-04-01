@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Country Codes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'codes.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'util.css') }}">
+
+</head>
+<body>
+<div class="limiter">
+<div class="container-table100">
+<div class="wrap-table100">
+<div class="table100">
+<table>
+<thead>
+    <tr class="table100-head">
+    <th class="column1">Country Name</th>
+    <th class="column2">Country ISO-Code</th>
+    </tr>
+</thead>
+<tbody>
+    {% for key, value in mydict.items() %}
+        {% if key != "Total:" %}
+            <tr>
+                <td class="column1">{{key}}</td>
+                <td class="column2">{{value}}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</tbody>
+</table>
+</body>
+</html>
