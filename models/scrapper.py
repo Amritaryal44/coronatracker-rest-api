@@ -40,9 +40,7 @@ def scrap_worldometer():
 
 def update_database():
     countries = scrap_worldometer()
-    i = 0
     for country in countries:
-        i += 1
         country_db = Worldometer.query.filter_by(countrycode=country["countrycode"]).first()
         if country_db:
                 # COUNTRY IN DATABASE AND NEW DATA HAS ARRIVED
@@ -52,10 +50,9 @@ def update_database():
             new_db = Worldometer(**country)
             db.session.add(new_db)
             db.session.commit()
-        print(str(len(countries)-i)+" remaining")
 
 def updater(old_db, country):
-    if old_db.countrycode != country["countrycode"] or old_db.totalcase != country["totalcase"] or old_db.newcase != country["newcase"] or old_db.totaldeath != country["totaldeath"] or old_db.newdeath != country["newdeath"] or old_db.totalrecovered != country["totalrecovered"] or old_db.critical != country["critical"] or old_db.lastupdated != country["lastupdated"]:
+    if old_db.totalcase != country["totalcase"] or old_db.totaldeath != country["totaldeath"] or old_db.totalrecovered != country["totalrecovered"] or old_db.critical != country["critical"]:
         old_db.countrycode = country["countrycode"]
         old_db.totalcase = country["totalcase"]
         old_db.newcase = country["newcase"]
