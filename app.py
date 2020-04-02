@@ -8,7 +8,7 @@ import atexit
 from resource.details import *
 from models.covidmodel import *
 
-POOL_TIME = 180 #Seconds i.e 5 minutes
+POOL_TIME = 300 #Seconds i.e 5 minutes
 
 # lock to control access to variable
 dataLock = threading.Lock()
