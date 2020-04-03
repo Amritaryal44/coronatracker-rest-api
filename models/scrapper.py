@@ -52,6 +52,7 @@ def update_database():
             db.session.commit()
 
 def updater(old_db, country):
+    # when new data arrives
     if old_db.totalcase != country["totalcase"] or old_db.totaldeath != country["totaldeath"] or old_db.totalrecovered != country["totalrecovered"] or old_db.critical != country["critical"]:
         old_db.countrycode = country["countrycode"]
         old_db.totalcase = country["totalcase"]
@@ -62,3 +63,6 @@ def updater(old_db, country):
         old_db.critical = country["critical"]
         old_db.lastupdated = country["lastupdated"]
         db.session.commit()
+    else:
+        old_db.newdeath = country["newdeath"]
+        old_db.newcase = country["newcase"]
